@@ -1,7 +1,7 @@
-package org.jetbrains.plugins.template.services
+package com.github.umbreon22.inlayenumordinals.services
 
+import com.github.umbreon22.inlayenumordinals.MyBundle
 import com.intellij.openapi.project.Project
-import org.jetbrains.plugins.template.MyBundle
 
 class MyProjectService(project: Project) {
 
