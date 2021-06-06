@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.github.umbreon22.inlayenumordinals</id>
-    <name>inlay-enum-ordinals</name>
+    <name>Inlay Enum Ordinals</name>
     <vendor>umbreon22</vendor>
 
     <!-- Product and plugin compatibility requirements -->
