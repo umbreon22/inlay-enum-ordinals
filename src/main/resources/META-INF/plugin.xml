@@ -7,5 +7,7 @@
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.java</depends>
-
+    <extensions defaultExtensionNs="com.intellij">
+        <codeInsight.inlayProvider language="JAVA" implementationClass="com.github.umbreon22.inlayenumordinals.EnumOrdinalHintProvider"/>
+    </extensions>
 </idea-plugin>
