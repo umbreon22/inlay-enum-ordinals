@@ -8,6 +8,10 @@
 Enum ordinals, inlay for the inLAY-Z - an IntelliJ Platform plugin.
 <!-- Plugin description end -->
 
+## Preview
+
+<img src="https://plugins.jetbrains.com/files/16945/screenshot_02c599ef-d64a-48e0-a7f1-9462b3e0e4d2" width="40%" height="40%"/>
+
 ## Installation
 
 - Using IDE built-in plugin system:
