@@ -5,7 +5,7 @@
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/16945.svg)](https://plugins.jetbrains.com/plugin/16945)
 
 <!-- Plugin description -->
-Enum ordinals, inlay for the inLAY-Z.
+Enum ordinals, inlay for the inLAY-Z - an IntelliJ Platform plugin.
 <!-- Plugin description end -->
 
 ## Installation
