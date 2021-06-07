@@ -1,10 +1,10 @@
 package com.github.umbreon22.inlayenumordinals;
 
+import com.github.umbreon22.inlayenumordinals.settings.EnumOrdinalSettingsState;
 import com.intellij.codeInsight.hints.ImmediateConfigurable;
 import com.intellij.codeInsight.hints.InlayHintsCollector;
 import com.intellij.codeInsight.hints.InlayHintsProvider;
 import com.intellij.codeInsight.hints.InlayHintsSink;
-import com.intellij.codeInsight.hints.NoSettings;
 import com.intellij.codeInsight.hints.SettingsKey;
 import com.intellij.lang.Language;
 import com.intellij.lang.java.JavaLanguage;
@@ -16,22 +16,23 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
-public class EnumOrdinalHintProvider implements InlayHintsProvider<NoSettings> {
+
+public class EnumOrdinalHintProvider implements InlayHintsProvider<EnumOrdinalSettingsState> {
 
 	private static final String NAME = "Inlay enum ordinals";
 	private static final String PREVIEW_TEXT = "Enum ordinals, inlay for the inLAY-Z.";
-	private static final String SETTINGS_KEY = "com.github.umbreon22.inlay-enum-ordinals";
+	private static final SettingsKey<EnumOrdinalSettingsState> SETTINGS_KEY = new SettingsKey<>("com.github.umbreon22.inlay-enum-ordinals");
 
 	@Nullable
 	@Override
-	public InlayHintsCollector getCollectorFor(@NotNull PsiFile psiFile, @NotNull Editor editor, @NotNull NoSettings settings, @NotNull InlayHintsSink inlayHintsSink) {
-		return new EnumOrdinalHintCollector(editor);
+	public InlayHintsCollector getCollectorFor(@NotNull PsiFile psiFile, @NotNull Editor editor, @NotNull EnumOrdinalSettingsState settings, @NotNull InlayHintsSink inlayHintsSink) {
+		return new EnumOrdinalHintCollector(editor, settings);
 	}
 
 	@NotNull
 	@Override
-	public NoSettings createSettings() {
-		return new NoSettings();
+	public EnumOrdinalSettingsState createSettings() {
+		return EnumOrdinalSettingsState.getInstance();
 	}
 
 	@Nls(capitalization = Nls.Capitalization.Sentence)
@@ -43,8 +44,8 @@ public class EnumOrdinalHintProvider implements InlayHintsProvider<NoSettings> {
 
 	@NotNull
 	@Override
-	public SettingsKey<NoSettings> getKey() {
-		return new SettingsKey<>(SETTINGS_KEY);
+	public SettingsKey<EnumOrdinalSettingsState> getKey() {
+		return SETTINGS_KEY;
 	}
 
 	@Nullable
@@ -55,7 +56,7 @@ public class EnumOrdinalHintProvider implements InlayHintsProvider<NoSettings> {
 
 	@NotNull
 	@Override
-	public ImmediateConfigurable createConfigurable(@NotNull NoSettings settings) {
+	public ImmediateConfigurable createConfigurable(@NotNull EnumOrdinalSettingsState settings) {
 		return changeListener -> new JPanel();
 	}
 
