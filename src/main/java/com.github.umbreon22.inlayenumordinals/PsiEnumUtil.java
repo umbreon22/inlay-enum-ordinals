@@ -1,10 +1,6 @@
 package com.github.umbreon22.inlayenumordinals;
 
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiEnumConstant;
-import com.intellij.psi.PsiField;
-import com.intellij.psi.PsiReferenceExpression;
+import com.intellij.psi.*;
 
 final class PsiEnumUtil {
 
@@ -44,9 +40,14 @@ final class PsiEnumUtil {
 	/**
 	 * Determines if the {@link PsiElement} represents an enum
 	 */
-	static boolean isEnum(PsiElement element) {
+	static boolean isEnum(PsiElement element, boolean hideHintIfArguments) {
 		if(element instanceof PsiEnumConstant) {
-			return true;
+			PsiEnumConstant constant = (PsiEnumConstant) element;
+			PsiExpressionList argList = constant.getArgumentList();
+			if(argList == null) {
+				return true;
+			}
+			return !hideHintIfArguments || argList.isEmpty();
 		} else if(element instanceof PsiReferenceExpression) {
 			PsiReferenceExpression expr = ((PsiReferenceExpression) element);
 			PsiElement resolved = expr.resolve();
