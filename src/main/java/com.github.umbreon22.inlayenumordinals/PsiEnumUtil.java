@@ -40,21 +40,28 @@ final class PsiEnumUtil {
 	/**
 	 * Determines if the {@link PsiElement} represents an enum
 	 */
-	static boolean isEnum(PsiElement element, boolean hideHintIfArguments) {
-		if(element instanceof PsiEnumConstant) {
-			PsiEnumConstant constant = (PsiEnumConstant) element;
-			PsiExpressionList argList = constant.getArgumentList();
-			if(argList == null) {
-				return true;
-			}
-			return !hideHintIfArguments || argList.isEmpty();
-		} else if(element instanceof PsiReferenceExpression) {
+	static boolean isEnum(PsiElement element) {
+		return element instanceof PsiEnumConstant;
+	}
+
+	/**
+	 * Determines if the {@link PsiElement} represents an enum reference
+	 */
+	static boolean isEnumReference(PsiElement element) {
+		if(element instanceof PsiReferenceExpression) {
 			PsiReferenceExpression expr = ((PsiReferenceExpression) element);
 			PsiElement resolved = expr.resolve();
 			return resolved instanceof PsiEnumConstant;
 		} else {
 			return false;
 		}
+	}
+	/**
+	 * Determines if the {@link PsiEnumConstant} has any arguments
+	 */
+	static boolean hasArguments(PsiEnumConstant constant) {
+		PsiExpressionList argList = constant.getArgumentList();
+		return argList == null || argList.isEmpty();
 	}
 
 }
