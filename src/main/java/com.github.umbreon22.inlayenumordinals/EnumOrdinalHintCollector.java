@@ -6,6 +6,7 @@ import com.intellij.codeInsight.hints.InlayHintsSink;
 import com.intellij.codeInsight.hints.presentation.InlayPresentation;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiEnumConstant;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.util.PsiTreeUtil;
 import org.jetbrains.annotations.NotNull;
@@ -26,21 +27,30 @@ public class EnumOrdinalHintCollector extends FactoryInlayHintsCollector {
 	public boolean collect(@NotNull PsiElement element, @NotNull Editor editor, @NotNull InlayHintsSink inlayHintsSink) {
 		if(element instanceof PsiJavaFile) {
 			PsiJavaFile file = (PsiJavaFile) element;
-			List<PsiElement> elements = collectEnumElements(file, settings.getHideHintIfArguments());
+			List<PsiElement> elements = collectEnumElements(file);
 			elements.forEach(elem -> addOrdinalHint(elem, inlayHintsSink));
 		}
 		return true;
 	}
 
-	private static List<PsiElement> collectEnumElements(PsiJavaFile file, boolean hideHintIfArguments) {
+	private List<PsiElement> collectEnumElements(PsiJavaFile file) {
 		List<PsiElement> elements = new LinkedList<>();
 		PsiTreeUtil.processElements(file, element -> {
-			if(PsiEnumUtil.isEnum(element, hideHintIfArguments)) {
+			if (shouldCollect(element)) {
 				elements.add(element);
 			}
 			return true;
 		});
 		return elements;
+	}
+
+	private boolean shouldCollect(PsiElement element) {
+		boolean isEnumConstant = PsiEnumUtil.isEnum(element);
+		if(isEnumConstant && settings.getHideHintIfArguments()) {
+			return !PsiEnumUtil.hasArguments((PsiEnumConstant) element);
+		} else {
+			return isEnumConstant || PsiEnumUtil.isEnumReference(element);
+		}
 	}
 
 	private void addOrdinalHint(PsiElement element, InlayHintsSink sink) {
