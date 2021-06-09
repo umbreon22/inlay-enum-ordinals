@@ -11,6 +11,6 @@
         <codeInsight.inlayProvider language="JAVA" implementationClass="com.github.umbreon22.inlayenumordinals.EnumOrdinalHintProvider"/>
         <applicationService serviceImplementation="com.github.umbreon22.inlayenumordinals.settings.EnumOrdinalSettingsState"/>
         <projectConfigurable instance="com.github.umbreon22.inlayenumordinals.settings.EnumOrdinalConfigurable"
-                             id="com.github.umbreon22.EnumOrdinalSettings" displayName="Inlay Enum Ordinal Settings" nonDefaultProject="true"/>
+                             id="com.github.umbreon22.EnumOrdinalSettings" displayName="Inlay Enum Ordinals" nonDefaultProject="true"/>
     </extensions>
 </idea-plugin>
