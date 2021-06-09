@@ -117,5 +117,4 @@ tasks {
     test {
         useJUnitPlatform()
     }
-
 }
