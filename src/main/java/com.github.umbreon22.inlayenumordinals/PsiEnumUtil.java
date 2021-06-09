@@ -61,7 +61,7 @@ final class PsiEnumUtil {
 	 */
 	static boolean hasArguments(PsiEnumConstant constant) {
 		PsiExpressionList argList = constant.getArgumentList();
-		return argList == null || argList.isEmpty();
+		return argList != null && !argList.isEmpty();
 	}
 
 }
