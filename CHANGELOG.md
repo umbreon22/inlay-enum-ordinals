@@ -3,5 +3,9 @@
 # inlay-enum-ordinals Changelog
 
 ## [Unreleased]
-### Added
-- Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+### Changed
+- Support IntelliJ IDEA 2025.3 and newer, including 2026.2 (previously limited to 2020.2 – 2021.3)
+- Build with the IntelliJ Platform Gradle Plugin 2.x, Gradle 9, and Java 21
+
+### Fixed
+- Save the "Hide Hint if Arguments are provided" setting in the IDE configuration directory

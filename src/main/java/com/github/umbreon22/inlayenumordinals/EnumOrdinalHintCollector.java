@@ -58,7 +58,7 @@ public class EnumOrdinalHintCollector extends FactoryInlayHintsCollector {
 		InlayPresentation ordinalText = getFactory().text(Integer.toString(ordinal));
 		InlayPresentation roundOrdinalText = getFactory().roundWithBackground(ordinalText);
 		sink.addInlineElement(
-			element.getTextRange().getEndOffset(), true, roundOrdinalText
+			element.getTextRange().getEndOffset(), true, roundOrdinalText, false
 		);
 	}
 
