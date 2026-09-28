@@ -1,7 +1,7 @@
 package com.github.umbreon22.inlayenumordinals.settings;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.util.xmlb.XmlSerializerUtil;
@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 @State(
 		name = "EnumOrdinalSettings",
 		storages = {
-				@Storage("/EnumOrdinalSettingsPlugin.xml")
+				@Storage("EnumOrdinalSettingsPlugin.xml")
 		}
 )
 public class EnumOrdinalSettingsState implements PersistentStateComponent<EnumOrdinalSettingsState> {
@@ -20,7 +20,7 @@ public class EnumOrdinalSettingsState implements PersistentStateComponent<EnumOr
 	private boolean hideHintIfArguments;
 
 	public static EnumOrdinalSettingsState getInstance() {
-		return ServiceManager.getService(EnumOrdinalSettingsState.class);
+		return ApplicationManager.getApplication().getService(EnumOrdinalSettingsState.class);
 	}
 
 	@Override
