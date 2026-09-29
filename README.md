@@ -14,7 +14,7 @@ Enum ordinals, inlay for the inLAY-Z - an IntelliJ Platform plugin.
 
 ## Installation
 
-Requires IntelliJ IDEA 2025.3 or newer.
+Requires IntelliJ IDEA 2026.2 or newer.
 
 - Using IDE built-in plugin system:
   
